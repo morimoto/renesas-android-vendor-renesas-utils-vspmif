@@ -260,7 +260,7 @@ static void output_fb(struct vspm_tp_private_t *priv)
 
 	char *fbp;
 
-	fbfd = open("/dev/fb0", O_RDWR);
+	fbfd = open("/dev/graphics/fb0", O_RDWR);
 	if (fbfd < 0) {
 		printf("Warning: failed to open!! ercd=%d\n", fbfd);
 		return;
