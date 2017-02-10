@@ -4,7 +4,10 @@ include $(CLEAR_VARS)
 
 LOCAL_C_INCLUDES:= \
     $(LOCAL_PATH)/vspm_if-module/files/vspm_if/include \
-    hardware/renesas/mmngr/libmmngr/mmngr/include
+    hardware/renesas/mmngr/libmmngr/mmngr/include \
+    hardware/renesas/vspm/vspm-module/files/vspm/include/ \
+    hardware/renesas/vspmif_km/vspm_if-module/files/vspm_if/include/ \
+    hardware/renesas/mmngr_km/mmngr_drv/mmngr/mmngr-module/files/mmngr/include
 
 LOCAL_SRC_FILES := \
     vspm_if-module/files/vspm_if/if/vspm_api.c \
@@ -24,7 +27,9 @@ include $(CLEAR_VARS)
 
 LOCAL_C_INCLUDES:= \
     $(LOCAL_PATH)/vspm_if-module/files/vspm_if/include \
-    hardware/renesas/mmngr/libmmngr/mmngr/include
+    hardware/renesas/mmngr/libmmngr/mmngr/include \
+    hardware/renesas/vspm/vspm-module/files/vspm/include/ \
+    hardware/renesas/mmngr_km/mmngr_drv/mmngr/mmngr-module/files/mmngr/include
 
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_EXECUTABLES)
 LOCAL_MODULE := vspm_tp
@@ -39,7 +44,9 @@ include $(CLEAR_VARS)
 
 LOCAL_C_INCLUDES:= \
     $(LOCAL_PATH)/vspm_if-module/files/vspm_if/include \
-    hardware/renesas/mmngr/libmmngr/mmngr/include
+    hardware/renesas/mmngr/libmmngr/mmngr/include \
+    hardware/renesas/vspm/vspm-module/files/vspm/include/ \
+    hardware/renesas/mmngr_km/mmngr_drv/mmngr/mmngr-module/files/mmngr/include
 
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_EXECUTABLES)
 LOCAL_MODULE := fdpm_tp
