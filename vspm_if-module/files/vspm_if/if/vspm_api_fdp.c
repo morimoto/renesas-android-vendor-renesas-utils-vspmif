@@ -296,14 +296,14 @@ static void vspm_if_set_fdp_param(
 
 
 int drv_FDPM_Open(
-	void *callback2,
-	void *callback3,
-	void *callback4,
+	__attribute__ ((unused)) void *callback2,
+	__attribute__ ((unused)) void *callback3,
+	__attribute__ ((unused)) void *callback4,
 	T_FDP_OPEN *open_par,
 	FP user_function,
-	void *userdata2,
-	void *userdata3,
-	void *userdata4,
+	__attribute__ ((unused)) void *userdata2,
+	__attribute__ ((unused)) void *userdata3,
+	__attribute__ ((unused)) void *userdata4,
 	int *sub_ercd)
 {
 	struct vspm_init_t init_par;
@@ -433,7 +433,7 @@ err_exit:
 int drv_FDPM_Close(
 	FP user_function,
 	int *sub_ercd,
-	unsigned char f_release)
+	__attribute__ ((unused)) unsigned char f_release)
 {
 	struct vspm_if_fdp_handle_t *hdl;
 	struct vspm_if_fdp_cb_t *cb;
@@ -480,7 +480,7 @@ int drv_FDPM_Close(
 
 
 static void vspm_if_fdp_cb_func(
-	unsigned long job_id, long result, void *user_data)
+	__attribute__ ((unused)) unsigned long job_id, long result, void *user_data)
 {
 	struct vspm_if_fdp_cb_t *cb_info =
 		(struct vspm_if_fdp_cb_t *)user_data;
@@ -613,7 +613,7 @@ err_exit1:
 }
 
 
-int drv_FDPM_Cancel(int id, int *sub_ercd)
+int drv_FDPM_Cancel(__attribute__ ((unused)) int id, int *sub_ercd)
 {
 	struct vspm_if_fdp_handle_t *hdl;
 	struct vspm_if_fdp_cb_t *cb;
