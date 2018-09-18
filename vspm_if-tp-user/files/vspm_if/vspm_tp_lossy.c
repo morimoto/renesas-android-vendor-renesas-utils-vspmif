@@ -179,7 +179,7 @@ static void draw_string(
 	unsigned int color)
 {
 	unsigned int *canvas;
-	int clr_idx, line_idx, moji_idx;
+	unsigned int clr_idx, line_idx, moji_idx;
 	unsigned int i, j;
 	unsigned char moji;
 
@@ -262,7 +262,7 @@ static void output_fb(struct vspm_tp_private_t *priv)
 
 	fbfd = open("/dev/graphics/fb0", O_RDWR);
 	if (fbfd < 0) {
-		printf("Warning: failed to open!! ercd=%d\n", fbfd);
+		printf("Warning: failed to open!! ercd=%ld\n", fbfd);
 		return;
 	}
 
@@ -499,7 +499,7 @@ int vsp_image_test(struct vspm_tp_private_t *priv, int lossy)
 	/* entry */
 	ercd = vspm_entry_job(priv->handle, &job_id, 126, &vspm_ip, (void *)cb_info, cb_func); 
 	if (ercd != R_VSPM_OK) {
-		printf("Error: failed to vspm_entry_job() ercd=%d\n", ercd);
+		printf("Error: failed to vspm_entry_job() ercd=%ld\n", ercd);
 		pthread_mutex_destroy(&cb_info->mutex);
 		free(cb_info);
 		return -1;
@@ -750,7 +750,7 @@ int vsp_blend_test(struct vspm_tp_private_t *priv)
 	/* entry */
 	ercd = vspm_entry_job(priv->handle, &job_id, 126, &vspm_ip, (void *)cb_info, cb_func); 
 	if (ercd != R_VSPM_OK) {
-		printf("Error: failed to vspm_entry_job() ercd=%d\n", ercd);
+		printf("Error: failed to vspm_entry_job() ercd=%ld\n", ercd);
 		pthread_mutex_destroy(&cb_info->mutex);
 		free(cb_info);
 		return -1;
@@ -775,7 +775,7 @@ int vsp_blend_test(struct vspm_tp_private_t *priv)
 }
 
 /* main function */
-int main(int argc, char *argv[])
+int main()
 {
 	struct vspm_tp_private_t *priv = NULL;
 
@@ -811,7 +811,7 @@ int main(int argc, char *argv[])
 
 	ercd = vspm_init_driver(&priv->handle, &init_par);
 	if (ercd != R_VSPM_OK) {
-		printf("Error: failed to vspm_init_driver() ercd=%d\n", ercd);
+		printf("Error: failed to vspm_init_driver() ercd=%ld\n", ercd);
 		goto err_exit1;
 	}
 
@@ -846,7 +846,7 @@ int main(int argc, char *argv[])
 
 	ercd = vspm_quit_driver(priv->handle);
 	if (ercd != R_VSPM_OK) {
-		printf("Error: failed to vspm_quit_driver() ercd=%d\n", ercd);
+		printf("Error: failed to vspm_quit_driver() ercd=%ld\n", ercd);
 		goto err_exit1;
 	}
 
@@ -870,6 +870,6 @@ err_exit1:
 err_exit0:
 	free(priv);
 
-	printf("FAIL\n", 0);
+	printf("FAIL\n");
 	return -1;
 }

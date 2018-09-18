@@ -14,8 +14,8 @@ LOCAL_SRC_FILES := \
     vspm_if-module/files/vspm_if/if/vspm_api_fdp.c \
     vspm_if-module/files/vspm_if/if/vspm_api_vsp.c \
 
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)
 LOCAL_MODULE:= libvspmif
+LOCAL_PROPRIETARY_MODULE := true
 
 LOCAL_SHARED_LIBRARIES := libmmngr
 
@@ -31,8 +31,9 @@ LOCAL_C_INCLUDES:= \
     hardware/renesas/vspm/vspm-module/files/vspm/include/ \
     hardware/renesas/mmngr_km/mmngr_drv/mmngr/mmngr-module/files/mmngr/include
 
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_EXECUTABLES)
 LOCAL_MODULE := vspm_tp
+LOCAL_PROPRIETARY_MODULE := true
+
 LOCAL_SHARED_LIBRARIES := libmmngr libvspmif
 
 LOCAL_SRC_FILES := \
@@ -48,8 +49,9 @@ LOCAL_C_INCLUDES:= \
     hardware/renesas/vspm/vspm-module/files/vspm/include/ \
     hardware/renesas/mmngr_km/mmngr_drv/mmngr/mmngr-module/files/mmngr/include
 
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_EXECUTABLES)
 LOCAL_MODULE := fdpm_tp
+LOCAL_PROPRIETARY_MODULE := true
+
 LOCAL_SHARED_LIBRARIES := libmmngr libvspmif
 
 LOCAL_SRC_FILES := \
