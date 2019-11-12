@@ -1,0 +1,50 @@
+cc_defaults {
+    name: "libvspmif_defaults",
+
+    proprietary: true,
+
+    include_dirs: [
+        "hardware/renesas/modules/vspm/vspm-module/files/vspm/include",
+        "hardware/renesas/modules/vspmif/vspm_if-module/files/vspm_if/include",
+        "hardware/renesas/modules/mmngr/mmngr_drv/mmngr/mmngr-module/files/mmngr/include",
+    ],
+
+    shared_libs: ["libmmngr"],
+}
+
+cc_library_shared {
+    defaults: ["libvspmif_defaults"],
+    name: "libvspmif",
+
+    compile_multilib: "64",
+
+    srcs: [
+        "vspm_if-module/files/vspm_if/if/vspm_api.c",
+        "vspm_if-module/files/vspm_if/if/vspm_api_fdp.c",
+        "vspm_if-module/files/vspm_if/if/vspm_api_vsp.c",
+    ],
+
+    local_include_dirs: ["vspm_if-module/files/vspm_if/include"],
+}
+
+cc_binary {
+    defaults: ["libvspmif_defaults"],
+    name: "vspm_tp",
+
+    srcs: ["vspm_if-tp-user/files/vspm_if/vspm_tp_lossy.c"],
+
+    local_include_dirs: ["vspm_if-module/files/vspm_if/include"],
+
+    shared_libs: ["libvspmif"],
+}
+
+cc_binary {
+    defaults: ["libvspmif_defaults"],
+    name: "fdpm_tp",
+
+    srcs: ["vspm_if-tp-user/files/vspm_if/fdpm_tp.c"],
+
+    local_include_dirs: ["vspm_if-module/files/vspm_if/include"],
+
+    shared_libs: ["libvspmif"],
+}
